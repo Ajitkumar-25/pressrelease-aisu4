@@ -1,4 +1,6 @@
-// Example data (replace with your own backend endpoint)
+
+
+
 const backendData = [
   {
     title: 'Card 1',
@@ -83,11 +85,21 @@ function createCard(title, date, time, category, description) {
   cardDescription.className = 'card-description';
   cardDescription.textContent = description;
 
+
+  const cardButton = document.createElement('button');
+  cardButton.className = 'card-button';
+  cardButton.textContent = 'Read More';
+  cardButton.addEventListener('click', function() {
+    // Handle button click event
+    console.log('Button clicked for ' + title);
+  });
+
   card.appendChild(cardTitle);
   card.appendChild(cardDate);
   card.appendChild(cardTime);
   card.appendChild(cardCategory);
   card.appendChild(cardDescription);
+  card.appendChild(cardButton);
 
   return card;
 }
@@ -105,3 +117,14 @@ function fetchDataAndDisplay() {
 
 // Fetch data and display when the page loads
 window.onload = fetchDataAndDisplay;
+
+
+
+
+
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+  nav.classList.toggle('nav-active');
+});
