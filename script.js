@@ -4,14 +4,14 @@
 const backendData = [
   {
     title: 'Card 1',
-    date: '2023-06-11',
+    date: '2023-06-14',
     time: '10:00 AM',
     category: 'Category 1',
     description: 'Description for Card 1'
   },
   {
     title: 'Card 2',
-    date: '2023-06-12',
+    date: '2023-06-14',
     time: '2:30 PM',
     category: 'Category 2',
     description: 'Description for Card 2'
@@ -56,9 +56,24 @@ const backendData = [
     date: '2023-06-18',
     time: '4:30 PM',
     category: 'Category 8',
-    description: 'Description for Card 8'
+    description: 'Description for Card 9'
+  },
+  {
+    title: 'Card 9',
+    date: '2023-06-18',
+    time: '4:30 PM',
+    category: 'Category 9',
+    description: 'Description for Card 9'
+  },
+  {
+    title: 'Card 10',
+    date: '2023-04-18',
+    time: '4:30 PM',
+    category: 'Category 10',
+    description: 'Description for Card 10'
   }
 ];
+
 
 // Function to create a card element
 function createCard(title, date, time, category, description) {
@@ -108,6 +123,13 @@ function createCard(title, date, time, category, description) {
 function fetchDataAndDisplay() {
   const cardContainer = document.getElementById('card-container');
 
+  // Sort the data based on the date in ascending order
+  backendData.sort((a, b) => {
+    const dateTimeA = new Date(a.date + ' ' + a.time);
+    const dateTimeB = new Date(b.date + ' ' + b.time);
+    return dateTimeB - dateTimeA;
+  });
+
   // Create and append cards for each data item
   backendData.forEach((item) => {
     const card = createCard(item.title, item.date, item.time, item.category, item.description);
@@ -128,3 +150,5 @@ const nav = document.querySelector('.nav-links');
 burger.addEventListener('click', () => {
   nav.classList.toggle('nav-active');
 });
+
+
