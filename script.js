@@ -75,6 +75,97 @@ const backendData = [
 ];
 
 
+
+
+
+
+let slideIndex = 0;
+let timer;
+
+function createCarouselItem(title, date, description) {
+  const item = document.createElement('div');
+  item.className = 'carousel-item';
+
+  const itemTitle = document.createElement('h2');
+  itemTitle.textContent = title;
+
+  const itemDate = document.createElement('p');
+  itemDate.textContent = 'Date: ' + date;
+
+  const itemDescription = document.createElement('p');
+  itemDescription.textContent = description;
+
+  item.appendChild(itemTitle);
+  item.appendChild(itemDate);
+  item.appendChild(itemDescription);
+
+  return item;
+}
+
+function displayCarouselItems() {
+  const carouselInner = document.getElementById('carouselInner');
+  carouselInner.innerHTML = '';
+
+  // Sort the data based on the date in descending order
+  backendData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const latestData = backendData.slice(0, 5); // Get the 5 latest data items
+
+  latestData.forEach((item) => {
+    const carouselItem = createCarouselItem(item.title, item.date, item.description);
+    carouselInner.appendChild(carouselItem);
+  });
+}
+
+function showSlide() {
+  const carouselItems = document.getElementsByClassName('carousel-item');
+
+  for (let i = 0; i < carouselItems.length; i++) {
+    carouselItems[i].style.display = 'none';
+  }
+
+  carouselItems[slideIndex].style.display = 'block';
+}
+
+function prevSlide() {
+  const carouselItems = document.getElementsByClassName('carousel-item');
+
+  slideIndex--;
+  if (slideIndex < 0) {
+    slideIndex = carouselItems.length - 1;
+  }
+
+  showSlide();
+}
+
+function nextSlide() {
+  const carouselItems = document.getElementsByClassName('carousel-item');
+
+  slideIndex++;
+  if (slideIndex >= carouselItems.length) {
+    slideIndex = 0;
+  }
+
+  showSlide();
+}
+
+function startCarousel() {
+  timer = setInterval(() => {
+    nextSlide();
+  }, 2000); 
+}
+
+function stopCarousel() {
+  clearInterval(timer);
+}
+
+document.getElementById('carouselInner').addEventListener('mouseenter', stopCarousel);
+document.getElementById('carouselInner').addEventListener('mouseleave', startCarousel);
+
+displayCarouselItems();
+showSlide();
+startCarousel();
+
 // Function to create a card element
 function createCard(title, date, time, category, description) {
   const card = document.createElement('div');
@@ -139,8 +230,6 @@ function fetchDataAndDisplay() {
 
 // Fetch data and display when the page loads
 window.onload = fetchDataAndDisplay;
-
-
 
 
 
