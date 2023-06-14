@@ -111,12 +111,31 @@ body{
 .card {
   background-color:orange;
   padding: 10px 10px ;
-  margin:  0px 10px 10px 10px;
+  margin:  10px 10px 10px 10px;
   width: 20%;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px solid black;
+  box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.8);
+  
+}
+.card:hover{
+transform: scale(1.07);
+}
+.card h2 {
+  margin: 0;
+  font-size: 24px;
+  color: red;
+}
 
+.card p {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: black;
+  font-weight: bolder;
+ 
+  
 }
 
 .card-title {
@@ -138,7 +157,7 @@ body{
   background-color: black;
   color:white;
   border: 1px solid white;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   margin-top: 5px;
 }
@@ -193,6 +212,12 @@ body{
   font-size:2em;
   margin:0% 1%;
   }
+  
+  .footer .row a i:hover{
+    transform: scale(1.8);
+    
+  }
+
   
   @media (max-width:720px){
   .footer{
