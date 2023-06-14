@@ -41,6 +41,12 @@ body{
   .nav-links a {
     color: red;
     text-decoration: none;
+    font-weight:bold ;
+  }
+  .nav-links a:hover{
+    color: black;
+    text-decoration: none;
+    font-weight:bold ;
   }
   
   .burger {
@@ -192,7 +198,7 @@ transform: scale(1.07);
   .footer .row a{
   text-decoration:none;
   color:white;
-  transition:0.5s;
+  transition:0.8s;
   }
   
   .footer .row a:hover{
@@ -206,6 +212,7 @@ transform: scale(1.07);
   .footer .row ul li{
   display:inline-block;
   margin:15px 15px;
+  font-weight: bolder;
   }
   
   .footer .row a i{
